@@ -1,0 +1,15 @@
+﻿Travelling Salesman Problem
+Find and print the shortest path and its total distance of the given 11 cities starting from city 1 to city 11.
+
+city    x-coordinate    y-coordinate
+A     5.681818    63.860370
+B    11.850649    83.983573
+C    13.798701    65.092402
+D    16.883117    40.451745
+E    23.782468    56.262834
+F    25.000000    31.211499
+G    29.951299    41.683778
+H    31.331169    25.256674
+I    37.175325    37.577002
+J    39.935065    19.096509
+K    46.834416    29.979466
