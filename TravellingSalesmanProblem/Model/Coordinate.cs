@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TravellingSalesmanProblem.Model
 {
-    internal class Coordinate
+    public class Coordinate
     {
         internal double X { get; private set; }
         internal double Y { get; private set; }

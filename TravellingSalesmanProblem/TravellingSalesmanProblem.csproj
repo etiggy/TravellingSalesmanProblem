@@ -54,7 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GraphLibrary\GraphLibrary.csproj">
-      <Project>{21e6a753-d5b8-43e3-84ec-0687cfc0d47b}</Project>
+      <Project>{0f2fb15b-884a-4698-a81e-b752320d8f7e}</Project>
       <Name>GraphLibrary</Name>
     </ProjectReference>
   </ItemGroup>

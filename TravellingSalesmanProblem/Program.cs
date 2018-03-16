@@ -25,7 +25,7 @@ namespace TravellingSalesmanProblem
         };
 
         //Graph to hold city network data
-        private static Graph graph;
+        private static Graph<double, Coordinate> graph;
 
         //Main method
         static void Main(string[] args)
@@ -44,7 +44,7 @@ namespace TravellingSalesmanProblem
         {
             bool loadSuccessful;
 
-            graph = new Graph();
+            graph = new Graph<double, Coordinate>();
 
             loadSuccessful = graph.LoadEdgeList(BuildEdgeListFromNodeList(graphInitialisationNodeList));
 
@@ -89,30 +89,25 @@ namespace TravellingSalesmanProblem
             {
                 nodeNameArray[i] = (string)graphInitialisationNodeList[i][0];
                 Coordinate cityCoordinates = (Coordinate)graphInitialisationNodeList[i][1];
-                Console.WriteLine("City \"{0}\" at coordinates X: {1} Y: {2}", nodeNameArray[i], cityCoordinates.X.ToString("00.000000"), 
+                Console.WriteLine("City \"{0}\" at coordinates X: {1} Y: {2}", nodeNameArray[i], cityCoordinates.X.ToString("00.000000"),
                     cityCoordinates.Y.ToString("00.000000"));
             }
 
             Console.WriteLine("\nCalculating shortest route using a recursive depth-first search algorithm...");
-            bool routeExist = graph.TraverseNodes(nodeNameArray, false);
             string routeName = nodeNameArray.First() + "-" + nodeNameArray.Last();
 
-            if (routeExist)
-            {
-                KeyValuePair<string, object> optimalRoute = graph.GetRouteByEdgeWeight(true);
+            bool preserveNodeOrder = false;
+            bool orderByAscending = true;
 
-                if (optimalRoute.Value != null)
-                {
-                    Console.WriteLine("\nThe shortest route for {0} is through {2}: {1} units", routeName, optimalRoute.Value, optimalRoute.Key);
-                }
-                else
-                {
-                    Console.WriteLine(optimalRoute.Key);
-                }
+            var optimalRoute = graph.GetRoute(nodeNameArray, preserveNodeOrder, orderByAscending, GetRouteBy.EdgeWeight);
+
+            if (optimalRoute.Value != null)
+            {
+                Console.WriteLine("\nThe shortest route for {0} is through {2}: {1} units", routeName, optimalRoute.Value, optimalRoute.Key);
             }
             else
             {
-                Console.WriteLine("There is no route for {0}", routeName);
+                Console.WriteLine(optimalRoute.Key);
             }
         }
     }
